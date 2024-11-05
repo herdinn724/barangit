@@ -10,5 +10,13 @@ class AuthController extends Controller
     {
         return view('auth/register');
     }
+    public function registerSave(Request $request)
+    {
+     Validator::make($request->all(), [
+        'name' => 'required',
+        'email' => 'required|email',
+        'password' => 'required|confirmed'
+     ])->validate();   
+    }
     
 }
